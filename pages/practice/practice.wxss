@@ -1,0 +1,30 @@
+.content{
+  font-family: "Microsoft YaHei";
+}
+.account{
+  display: flex;
+  flex-direction: row;
+  padding:10px;
+  font-size: 16px;
+}
+.account view{
+  margin-right: 10px;
+}
+.count{
+  color: #0099ff;
+}
+.line{
+  border:1px solid #cccccc;
+  opacity: 0.2;
+}
+.items{
+  width: 100%;
+  padding:10px;
+  text-align: center;
+  font-size: 13px;
+}
+.item{
+  width:30%;
+  float: left;
+  margin-bottom: 50px;
+}

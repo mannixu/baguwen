@@ -1,0 +1,74 @@
+<view class="rank">
+  <view class="img">
+    <image src="/images/find/bhead.jpg" style="width:99px;height:99px;"></image>
+  </view>
+  <view class="name">温建华</view>
+  <view class="stat">本周答对题目591道</view>
+</view>
+<view class="items">
+  <view class="item">
+     <view class="num">1</view>
+     <view class="pic">
+       <image src="/images/find/whead.jpg" style="width:39px;height:39px;"></image>
+     </view>
+     <view class="desc">
+        <view class="name1">温建华</view>
+        <view class="school">北京九中</view>
+     </view>
+     <view class="count">591</view>
+     <view class="unit">道</view>
+  </view>
+  <view class="line"></view>
+   <view class="item">
+     <view class="num">2</view>
+     <view class="pic">
+       <image src="/images/find/whead.jpg" style="width:39px;height:39px;"></image>
+     </view>
+     <view class="desc">
+        <view class="name1">陈雪</view>
+        <view class="school">河南寨中学</view>
+     </view>
+     <view class="count">462</view>
+     <view class="unit">道</view>
+  </view>
+  <view class="line"></view>
+   <view class="item">
+     <view class="num">3</view>
+     <view class="pic">
+       <image src="/images/find/whead.jpg" style="width:39px;height:39px;"></image>
+     </view>
+     <view class="desc">
+        <view class="name1">万古</view>
+        <view class="school">北京九中</view>
+     </view>
+     <view class="count">370</view>
+     <view class="unit">道</view>
+  </view>
+  <view class="line"></view>
+   <view class="item">
+     <view class="num">4</view>
+     <view class="pic">
+       <image src="/images/find/whead.jpg" style="width:39px;height:39px;"></image>
+     </view>
+     <view class="desc">
+        <view class="name1">亲爱的仙女小公举</view>
+        <view class="school">中关村中学</view>
+     </view>
+     <view class="count">322</view>
+     <view class="unit">道</view>
+  </view>
+  <view class="line"></view>
+   <view class="item">
+     <view class="num">5</view>
+     <view class="pic">
+       <image src="/images/find/whead.jpg" style="width:39px;height:39px;"></image>
+     </view>
+     <view class="desc">
+        <view class="name1">Bingo</view>
+        <view class="school">北京九中</view>
+     </view>
+     <view class="count">295</view>
+     <view class="unit">道</view>
+  </view>
+  <view class="line"></view>
+</view>

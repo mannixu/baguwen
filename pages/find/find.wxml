@@ -1,0 +1,85 @@
+<view class="content">
+  <view class="items">
+    <view class="hr"></view>
+    <view class="item">
+      <view class="img">
+        <image src="/images/find/xypc.jpg" style="width:17px;height:18px"></image>
+      </view>
+      <view class="name">小猿测评</view>
+      <view class="detail">
+        <text>数学水平测验全新上线 ></text>
+      </view>
+    </view>
+    <view class="hr"></view>
+    <view class="item">
+      <view class="img">
+        <image src="/images/find/zyq.jpg" style="width:17px;height:18px"></image>
+      </view>
+      <view class="name">作业群</view>
+      <view class="detail">
+        <text> ></text>
+      </view>
+    </view>
+    <view class="line"></view>
+     <view class="item" bindtap="rank">
+      <view class="img">
+        <image src="/images/find/phb.jpg" style="width:17px;height:18px"></image>
+      </view>
+      <view class="name">排行榜</view>
+      <view class="detail">
+        <text> ></text>
+      </view>
+    </view>
+    <view class="line"></view>
+     <view class="item">
+      <view class="img">
+        <image src="/images/find/ctsp.jpg" style="width:17px;height:18px"></image>
+      </view>
+      <view class="name">错题锁屏</view>
+      <view class="detail">
+        <text>未开启 ></text>
+      </view>
+    </view>
+    <view class="hr"></view>
+     <view class="item">
+      <view class="img">
+        <image src="/images/find/gswzs.jpg" style="width:17px;height:18px"></image>
+      </view>
+      <view class="name">古诗文助手</view>
+      <view class="detail">
+        <text>诗文自古多套路 ></text>
+      </view>
+    </view>
+    <view class="hr"></view>
+     <view class="item">
+      <view class="img">
+        <image src="/images/find/xzyfd.jpg" style="width:17px;height:18px"></image>
+      </view>
+      <view class="name">下载猿辅导App</view>
+      <view class="detail">
+        <text> ></text>
+      </view>
+    </view>
+    <view class="line"></view>
+     <view class="item">
+      <view class="img">
+        <image src="/images/find/pzst.jpg" style="width:17px;height:18px"></image>
+      </view>
+      <view class="name">拍照搜题</view>
+      <view class="detail">
+        <text> ></text>
+      </view>
+    </view>
+    <view class="line"></view>
+     <view class="item">
+      <view class="img">
+        <image src="/images/find/ytklsb.jpg" style="width:17px;height:18px"></image>
+      </view>
+      <view class="name">猿题库老师版</view>
+      <view class="detail">
+        <text>老师布置作业利器 ></text>
+      </view>
+    </view>
+    <view class="hr"></view>
+  </view>
+</view>

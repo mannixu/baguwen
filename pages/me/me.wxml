@@ -1,0 +1,124 @@
+<view class="content">
+  <view class="items">
+    <view class="hr"></view>
+    <view class="item">
+      <view class="img">
+        <image src="/images/me/head.jpg" style="width:54px;height:54px"></image>
+      </view>
+      <view class="name">{{userInfo.nickName}}</view>
+      <view class="detail">
+        <text>></text>
+      </view>
+    </view>
+    <view class="hr">
+      练习
+    </view>
+    <view class="item">
+      <view class="img">
+        <image src="/images/me/ct.jpg" style="width:17px;height:18px"></image>
+      </view>
+      <view class="name">错题、收藏、笔记</view>
+      <view class="detail">
+        <text> ></text>
+      </view>
+    </view>
+    <view class="line"></view>
+    <view class="item" bindtap="rank">
+      <view class="img">
+        <image src="/images/me/lxjl.jpg" style="width:17px;height:18px"></image>
+      </view>
+      <view class="name">练习记录</view>
+      <view class="detail">
+        <text> ></text>
+      </view>
+    </view>
+    <view class="line"></view>
+    <view class="item">
+      <view class="img">
+        <image src="/images/me/kph.jpg" style="width:17px;height:18px"></image>
+      </view>
+      <view class="name">卡片盒</view>
+      <view class="detail">
+        <text>></text>
+      </view>
+    </view>
+    <view class="hr">
+      猿辅导
+    </view>
+
+    <view class="item">
+      <view class="img">
+        <image src="/images/me/wdkc.jpg" style="width:17px;height:18px"></image>
+      </view>
+      <view class="name">我的课程</view>
+      <view class="detail">
+        <text> ></text>
+      </view>
+    </view>
+    <view class="line"></view>
+    <view class="item">
+      <view class="img">
+        <image src="/images/me/lxkc.jpg" style="width:17px;height:18px"></image>
+      </view>
+      <view class="name">离线课程</view>
+      <view class="detail">
+        <text> ></text>
+      </view>
+    </view>
+    <view class="line"></view>
+    <view class="item">
+      <view class="img">
+        <image src="/images/me/dd.jpg" style="width:17px;height:18px"></image>
+      </view>
+      <view class="name">订单</view>
+      <view class="detail">
+        <text> ></text>
+      </view>
+    </view>
+    <view class="line"></view>
+    <view class="item">
+      <view class="img">
+        <image src="/images/me/ye.jpg" style="width:17px;height:18px"></image>
+      </view>
+      <view class="name">余额及代金券</view>
+      <view class="detail">
+        <text> ></text>
+      </view>
+    </view>
+    <view class="line"></view>
+    <view class="item">
+      <view class="img">
+        <image src="/images/me/yfdxx.jpg" style="width:17px;height:18px"></image>
+      </view>
+      <view class="name">猿辅导信息</view>
+      <view class="detail">
+        <text> ></text>
+      </view>
+    </view>
+    <view class="line"></view>
+    <view class="hr">
+      通用
+    </view>
+ <view class="line"></view>
+    <view class="item">
+      <view class="img">
+        <image src="/images/me/tz.jpg" style="width:17px;height:18px"></image>
+      </view>
+      <view class="name">通知</view>
+      <view class="detail">
+        <text> ></text>
+      </view>
+    </view>
+    <view class="line"></view>
+    <view class="item">
+      <view class="img">
+        <image src="/images/me/sz.jpg" style="width:17px;height:18px"></image>
+      </view>
+      <view class="name">设置</view>
+      <view class="detail">
+        <text> ></text>
+      </view>
+    </view>
+    <view class="hr"></view>
+  </view>
+</view>

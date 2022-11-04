@@ -1,0 +1,95 @@
+.menu{
+  display: flex;
+  flex-direction: row;
+  width:100%;
+  background-color: #0099FF;
+  height: 40px;
+}
+.select{
+  font-size: 12px;
+  color: #0099FF;
+  width:50%;
+  background-color: #ffffff;
+  text-align: center;
+  height: 30px;
+  line-height: 30px;
+  border: 1px solid #ffffff;
+   border-radius: 3px;
+}
+.default{
+  width:50%;
+  font-size: 12px;
+  text-align: center;
+  height: 30px;
+  line-height: 30px;
+  color: #ffffff;
+  border: 1px solid #ffffff;
+  border-radius: 3px;
+}
+.content{
+  background-color: #F0EFF4;
+  height: 600px;
+  font-family: "Microsoft YaHei";
+}
+.title{
+  margin:10px;
+  font-size: 16px;
+}
+.item{
+  display: flex;
+  flex-direction: row;
+  background-color: #ffffff;
+  padding:10px;
+  align-items: center;
+}
+.name{
+  width:90%;
+  font-size:16px;
+}
+.opr{
+  width:10%;
+  text-align: center;
+}
+.line{
+  border:1px solid #cccccc;
+  opacity: 0.2;
+}
+.scoreInfo{
+  background-color: #ffffff;
+  height: 140px;
+}
+.forecast{
+  font-size: 13px;
+  padding:10px;
+}
+.score{
+  font-size: 50px;
+  text-align: center;
+  color: #0099FF;
+}
+.unit{
+  text-align: right;
+  margin-right: 10px;
+  font-size: 15px;
+}
+.pic{
+  width:10%;
+}
+.stage{
+  width:80%;
+}
+.stageName{
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+.edit{
+  width:10%;
+  text-align: center;
+}
+.desc{
+  font-size: 11px;
+  color: #999999;
+}
+.hr{
+  height: 20px;
+}

@@ -1,0 +1,64 @@
+<view class="scoreInfo">
+  <view class="forecast">预测分</view>
+  <view class="score">?</view>
+  <view class="unit">分/120分</view>
+</view>
+<view class="title">
+  北京市考纲-语文考点练习
+</view>
+<view class="item">
+  <view class="pic">
+    <image src="/images/icon/shousuo.jpg" style="width:15px;height:15px;"></image>
+  </view>
+  <view class="stage">
+     <view class="stageName">第一部分 基础-运用</view>
+     <view>
+       <image src="/images/icon/level.jpg" style="width:97px;height:15px;"></image>
+     </view> 
+  </view>
+    <view class="edit" bindtap="edit">
+       <image src="/images/icon/edit.jpg" style="width:21px;height:20px;"></image>
+     </view>
+</view>
+<view class="line"></view>
+<view class="item">
+  <view class="pic">
+    <image src="/images/icon/shousuo.jpg" style="width:15px;height:15px;"></image>
+  </view>
+  <view class="stage">
+     <view class="stageName">第二部分 阅读</view>
+     <view>
+       <image src="/images/icon/level.jpg" style="width:97px;height:15px;"></image>
+     </view> 
+  </view>
+    <view class="edit" bindtap="edit">
+       <image src="/images/icon/edit.jpg" style="width:21px;height:20px;"></image>
+     </view>
+</view>
+<view class="line"></view>
+<view class="item">
+  <view class="pic">
+    <image src="/images/icon/shousuo.jpg" style="width:15px;height:15px;"></image>
+  </view>
+  <view class="stage">
+     <view class="stageName">第三部分 写作（附优秀范文）</view>
+     <view class="desc">
+       (请在大题解析下查看该考点)
+     </view> 
+  </view>
+    <view class="edit" bindtap="edit">
+       <image src="/images/icon/edit.jpg" style="width:21px;height:20px;"></image>
+     </view>
+</view>
+<view class="line"></view>
+<view class="hr"></view>
+<view class="item">
+  <view class="pic">
+  </view>
+  <view class="stage">
+     <view class="stageName">大题解析（附优秀范文）</view>
+  </view>
+    <view class="edit" bindtap="edit">
+       <image src="/images/icon/edit.jpg" style="width:21px;height:20px;"></image>
+     </view>
+</view>

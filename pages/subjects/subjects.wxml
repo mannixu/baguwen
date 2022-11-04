@@ -1,0 +1,17 @@
+<view class="content">
+  <block wx:for="{{subjects}}">
+    <view class="item">
+      <view class="pic">
+        <image src="{{item.pic}}" style="width:28px;height:33px;"></image>
+      </view>
+      <view class="subject">
+        <view class="name">{{item.name}}</view>
+        <view class="desc">{{item.desc}}</view>
+      </view>
+      <view class="btn">
+        <switch type="switch" checked="{{item.status=='1'?true:''}}" id="{{item.id}}" bindchange="switchChange" />
+      </view>
+    </view>
+    <view class="line"></view>
+  </block>
+</view>

@@ -1,0 +1,15 @@
+<view class="menu">
+  <view class="{{currentTab==0?'select':'default'}}" data-current="0" bindtap="switchNav">同步</view>
+  <view class="{{currentTab==1?'select':'default'}}" data-current="1" bindtap="switchNav">中考</view>
+</view>
+<view class="content">
+  <view class="hr"></view>
+  <swiper current="{{currentTab}}" style="height:800px;">
+    <swiper-item>
+       <include src="tb.wxml" />
+    </swiper-item>
+    <swiper-item>
+       <include src="zk.wxml" />
+    </swiper-item>
+  </swiper>
+</view>

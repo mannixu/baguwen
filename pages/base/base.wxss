@@ -1,0 +1,74 @@
+.content{
+  font-family: "Microsoft YaHei";
+}
+.stage{
+  padding:10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.name{
+  font-size: 16px;
+  width:90%;
+}
+.count{
+  width:10%;
+  font-size: 13px;
+}
+.currentTab{
+  font-size: 20px;
+  color: #0099FF;
+  font-weight: bold;
+}
+.line{
+  border: 1px solid #cccccc;
+  opacity: 0.2;
+}
+.subject{
+  padding:10px;
+}
+.subjectName{
+  font-size: 16px;
+}
+.year{
+  color: #0099FF;
+}
+.desc{
+  margin-top:10px;
+  font-size: 16px;
+}
+.items{
+  margin-top:10px;
+}
+.item{
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+.left{
+  width: 10%;
+}
+.num{
+  color:#0099FF;
+  border: 1px solid #0099FF;
+  height: 30px;
+  width: 30px;
+  line-height: 30px;
+  text-align: center;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+.result{
+  font-size: 16px;
+  line-height: 30px;
+}
+.blank{
+  background-color: #0099FF;
+  border-radius: 3px;
+  height: 25px;
+  line-height: 25px;
+}
+.fillBlanks{
+  font-size: 16px;
+}

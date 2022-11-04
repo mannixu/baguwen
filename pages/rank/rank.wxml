@@ -1,0 +1,19 @@
+<view class="menu">
+  <view class="{{currentTab==0?'select':'default'}}" data-current="0" bindtap="switchNav">全校学霸</view>
+  <view class="{{currentTab==1?'select':'default'}}" data-current="1" bindtap="switchNav">全省学霸</view>
+  <view class="{{currentTab==2?'select':'default'}}" data-current="2" bindtap="switchNav">全省校霸</view>
+</view>
+<view class="content">
+  <view class="hr"></view>
+  <swiper current="{{currentTab}}" style="height:800px;">
+    <swiper-item>
+       <include src="qxxb.wxml" />
+    </swiper-item>
+    <swiper-item>
+       <include src="qsxb.wxml" />
+    </swiper-item>
+    <swiper-item>
+       <include src="xb.wxml" />
+    </swiper-item>
+  </swiper>
+</view>

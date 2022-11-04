@@ -1,0 +1,25 @@
+.item{
+  display: flex;
+  flex-direction: row;
+  padding:10px;
+}
+.pic{
+  width:10%;
+}
+.subject{
+  width:75%;
+}
+.btn{
+  width:15%;
+}
+.name{
+  font-weight: bold;
+}
+.desc{
+  font-size: 12px;
+  margin-top:10px;
+  color: #666666;
+}
+.line{
+  border: 1px dotted #cccccc;
+}

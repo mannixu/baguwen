@@ -1,0 +1,85 @@
+<view class="content">
+  <swiper style="height:800px;" bindchange="changeContent">
+    <view class="stage">
+      <view class="name">专项智能练习（第一部分） 基础·运用</view>
+      <view class="count">
+        <text class="currentTab">{{currentTab}}</text>/5
+      </view>
+    </view>
+    <view class="line"></view>
+
+    
+    <swiper-item>
+      <view class="subject">
+        <view class="subjectName">
+          <text class="year">(2014抚州)</text>下面情景中，导游能巧妙化解矛盾的一项是（）。
+        </view>
+        <view class="desc">
+          在王安石纪念馆参观时，一男游客和一女游客就王安石到底是临川人还是东乡人争得不可开交。
+        </view>
+        <view class="items">
+
+        <radio-group name="radio" wx:for="{{listError}}">
+          <view class="item">
+            <view class="left">
+              <label><radio value="radio1"/></label>
+            </view>
+            <view class="result">{{item}}</view>
+          </view>
+
+
+         
+
+        </radio-group>
+
+
+          <button bindtap="changeData">xxx</button>
+        </view>
+      
+      </view>
+      
+    </swiper-item>
+   
+
+
+    <swiper-item>
+      <view class="subject">
+         <view class="fillBlanks">
+           <text class="year">(2014淮安)</text>
+           <text class="blank">___________________</text>
+           <text>？，留取丹心照汗青。（文天祥《过零丁洋》）</text>
+         </view>
+      </view>
+    </swiper-item>
+    <swiper-item>
+      <view class="subject">
+         <view class="fillBlanks">
+           <text class="year">(2013莆田)</text>
+           <text>采菊东篱下，</text>
+           <text class="blank">___________________</text>
+           <text>。（陶渊明《饮酒》）</text>
+         </view>
+      </view>
+    </swiper-item>
+    <swiper-item>
+      <view class="subject">
+         <view class="fillBlanks">
+           <text class="year">(2012南昌)</text>
+           <text>会当凌绝顶，</text>
+           <text class="blank">___________________</text>
+           <text>。（杜甫《望岳》）</text>
+         </view>
+      </view>
+    </swiper-item>
+    <swiper-item>
+      <view class="subject">
+         <view class="fillBlanks">
+           <text class="year">(2012潍坊)</text>
+           <text>先天下之忧而忧，</text>
+           <text class="blank">___________________</text>
+           <text>。（范仲淹《岳阳楼记》）</text>
+         </view>
+      </view>
+    </swiper-item>
+  </swiper>
+</view>

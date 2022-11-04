@@ -1,0 +1,45 @@
+<view class="title">
+  当前教材：北京课改版
+</view>
+<view class="item">
+  <view class="name">七年级上册</view>
+  <view class="opr">
+    <image src="/images/icon/xia.jpg" style="width:17px;height:11px;"></image>
+  </view>
+</view>
+<view class="line"></view>
+<view class="item">
+  <view class="name">七年级下册</view>
+  <view class="opr">
+    <image src="/images/icon/xia.jpg" style="width:17px;height:11px;"></image>
+  </view>
+</view>
+<view class="line"></view>
+<view class="item">
+  <view class="name">八年级上册</view>
+  <view class="opr">
+    <image src="/images/icon/xia.jpg" style="width:17px;height:11px;"></image>
+  </view>
+</view>
+<view class="line"></view>
+<view class="item">
+  <view class="name">八年级下册</view>
+  <view class="opr">
+    <image src="/images/icon/xia.jpg" style="width:17px;height:11px;"></image>
+  </view>
+</view>
+<view class="line"></view>
+<view class="item">
+  <view class="name">九年级上册</view>
+  <view class="opr">
+    <image src="/images/icon/xia.jpg" style="width:17px;height:11px;"></image>
+  </view>
+</view>
+<view class="line"></view>
+<view class="item">
+  <view class="name">九年级下册</view>
+  <view class="opr">
+    <image src="/images/icon/xia.jpg" style="width:17px;height:11px;"></image>
+  </view>
+</view>
+<view class="line"></view>

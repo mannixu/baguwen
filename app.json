@@ -1,0 +1,37 @@
+{
+  "pages":[
+    "pages/practice/practice",
+    "pages/find/find",
+    "pages/me/me",
+    "pages/subjects/subjects",
+    "pages/grade/grade",
+    "pages/base/base",
+    "pages/rank/rank"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#0099FF",
+    "navigationBarTitleText": "猿题库",
+    "navigationBarTextStyle":"white"
+  },
+  "tabBar": {
+    "backgroundColor": "#F7F6F9",
+    "selectedColor": "#0099FF",
+    "list": [{
+      "pagePath": "pages/practice/practice",
+      "text": "练习",
+      "iconPath": "/images/bar/practice-0.jpg",
+      "selectedIconPath": "/images/bar/practice-1.jpg"
+    },{
+      "pagePath": "pages/find/find",
+      "text": "发现",
+      "iconPath": "/images/bar/find-0.jpg",
+      "selectedIconPath": "/images/bar/find-1.jpg"
+    },{
+      "pagePath": "pages/me/me",
+      "text": "我",
+      "iconPath": "/images/bar/me-0.jpg",
+      "selectedIconPath": "/images/bar/me-1.jpg"
+    }]
+  }
+}
