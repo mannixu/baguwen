@@ -26,6 +26,7 @@
 }
 .subject{
   padding:10px;
+  /* position: relative; */
 }
 .subjectName{
   font-size: 16px;
@@ -46,11 +47,12 @@
   margin-bottom: 20px;
   margin-top: 20px;
 }
+
 .left{
   width: 10%;
 }
 .num{
-  color:#0099FF;
+  color:#ffffff;
   border: 1px solid #0099FF;
   height: 30px;
   width: 30px;
@@ -58,6 +60,46 @@
   text-align: center;
   border-radius: 50%;
   margin-right: 10px;
+}
+.num2{
+  color:#ffffff;
+  border: 1px solid #a7050e;
+  background-color: #a7050e;
+  height: 30px;
+  width: 30px;
+  line-height: 30px;
+  text-align: center;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+.num1{
+  color:#ffffff;
+  border: 1px solid #0099FF;
+  background-color: #0099FF;
+  height: 30px;
+  width: 30px;
+  line-height: 30px;
+  text-align: center;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+.empty{
+  color:#0099FF;
+  align-items: center;
+  margin-top: 180px;
+}
+.itemnum{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  margin-left: 1px;
+}
+.submit {
+  color:#ffffff;
+  background-color: #0099FF;
+  margin-top: 360px;
 }
 .result{
   font-size: 16px;
@@ -71,4 +113,7 @@
 }
 .fillBlanks{
   font-size: 16px;
+}
+.input{
+  
 }

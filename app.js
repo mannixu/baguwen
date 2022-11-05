@@ -33,6 +33,14 @@ App({
     var subjects = new Array();
 
     var subject = new Object();
+    subject.id = "0";
+    subject.pic = "/images/subject/wuli.jpg";
+    subject.name = "八股文";
+    subject.status = "1";
+    subject.desc = "支持初中语文所有教材版本的同步练习，覆盖中考考纲的冲刺总复习";
+    subjects.push(subject);
+
+    var subject = new Object();
     subject.id = "1";
     subject.pic = "/images/subject/yuwen.jpg";
     subject.name = "语文";

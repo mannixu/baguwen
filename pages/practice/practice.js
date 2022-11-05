@@ -2,7 +2,14 @@ var app = getApp();
 Page({
   data:{
     userInfo:{},
-    subjects:[]
+    subjects:[],
+
+    imag: ['/images/pract/bgw1.jpeg', '/images/pract/bgw2.jpeg', '/images/pract/bgw3.jpeg'],
+    indicatorDots: true,
+    vertical: false,
+    autoplay: true,
+    interval: 2000,
+    duration: 500
   },
   onLoad:function(){
     var page = this;
@@ -29,7 +36,7 @@ Page({
   seeSubject:function(e){
      var name = e.target.id;
      wx.navigateTo({
-       url: '../grade/grade?subjectName='+name+"|免费"
+       url: '../grade/grade?subjectName='+name
      })
   }
 })

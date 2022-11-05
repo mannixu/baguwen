@@ -1,40 +1,51 @@
 <view class="content">
-  <swiper style="height:800px;" bindchange="changeContent">
-    <view class="stage">
-      <view class="name">专项智能练习（第一部分） 基础·运用</view>
+  <!-- swiper 想要点击切换加上current 想要获取当前页e.detail.current  -->
+  <swiper style="height:800px;" current="{{currentTab}}"  bindchange="changeContent" >  
+    <!-- 这个函数作用就是改变currentable的值 滑动加不加都可以滑动 -->
+    <swiper-item wx:for="{{topic.data}}" wx:key="this">
+
+      <view class="stage">
+      <view class="name">{{item.chapterTitle}}</view>
       <view class="count">
-        <text class="currentTab">{{currentTab}}</text>/5
+        <text class="currentTab">{{currentTab+1}}</text>/5
       </view>
     </view>
     <view class="line"></view>
 
-    
-    <swiper-item>
+
       <view class="subject">
         <view class="subjectName">
-          <text class="year">(2014抚州)</text>下面情景中，导游能巧妙化解矛盾的一项是（）。
+          <text class="year">(2014抚州)</text>{{item.topicName}}  
+          <!-- 题目名 -->
         </view>
         <view class="desc">
-          在王安石纪念馆参观时，一男游客和一女游客就王安石到底是临川人还是东乡人争得不可开交。
+          <!-- 在王安石纪念馆参观时，一男游客和一女游客就王安石到底是临川人还是东乡人争得不可开交。 -->
         </view>
-        <view class="items">
-
-        <radio-group name="radio" wx:for="{{listError}}">
-          <view class="item">
+    <view class="items">
+      <block wx:if="{{item.type==1}}"> 
+        <!-- 类型为选择题才进行遍历 -->
+        <radio-group name="radio" >
+          <view class="item" wx:for="{{item.listError}}" wx:for-item="topicItem" wx:key="topicItem">
+          <!-- 遍历答案 -->
             <view class="left">
-              <label><radio value="radio1"/></label>
+              <label><radio value="radio1" color="#0099FF"/></label>
             </view>
-            <view class="result">{{item}}</view>
+            <view class="result">{{topicItem}}</view>
           </view>
-
-
-         
-
         </radio-group>
+      </block>
 
 
-          <button bindtap="changeData">xxx</button>
+          <!-- <button bindtap="truntopic" data-num1="4">xxx</button> -->
+         <!-- 显示填空题 -->
+      <block wx:if="{{item.type==2}}">
+        <view class="item"  wx:for="{{item.listTrue}}" wx:key="this" wx:for-index="idx">
+           <view>答案{{idx+1}}：</view>
+           <input  class=""   placeholder="请输入答案{{idx+1}}"/>
         </view>
+      </block>
+          
+    </view>
       
       </view>
       
@@ -43,15 +54,37 @@
 
 
     <swiper-item>
-      <view class="subject">
+   
+      <view class="subject" wx:if="{{topic!=''}}"> 
+      <!-- 让他先显示题目 题目不空再显示最后一页 -->
          <view class="fillBlanks">
-           <text class="year">(2014淮安)</text>
-           <text class="blank">___________________</text>
-           <text>？，留取丹心照汗青。（文天祥《过零丁洋》）</text>
+          <text>{{topic.data[0].chapterTitle}}</text>
+         
+        <view class="itemnum">
+         <block wx:for="{{topic.data}}" wx:key="this" wx:for-index="numindex">
+          <view class="num1" bindtap="truntopic" data-num1="{{numindex}}">{{numindex+1}}</view>
+         </block>
+          <!-- <view class="num1">1</view>
+          <view class="num1">2</view>
+          <view class="num1">3</view>
+          <view class="num1">4</view>
+          <view class="num1">5</view> -->
+        </view>
+        
+           
+           <button  class="submit" >提交并查看结果</button>
          </view>
       </view>
+   
+
+      <!-- <view>
+        <text>{{topic.data[0].chapterTitle}}</text>
+        <view class="empty">
+        <text >{{topic.data[0].chapterTitle}} 题目为空请添加题目</text>
+      </view>
+      </view> -->
     </swiper-item>
-    <swiper-item>
+    <!-- <swiper-item>
       <view class="subject">
          <view class="fillBlanks">
            <text class="year">(2013莆田)</text>
@@ -80,6 +113,6 @@
            <text>。（范仲淹《岳阳楼记》）</text>
          </view>
       </view>
-    </swiper-item>
+    </swiper-item> -->
   </swiper>
 </view>

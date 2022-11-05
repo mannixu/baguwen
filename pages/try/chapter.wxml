@@ -6,50 +6,23 @@
 <view class="title">
   北京市考纲-语文考点练习
 </view>
-<block wx:for="{{chapter.data}}" wx:key="*this"  wx:for-index="idx">
-<view class="item" >
+<view class="item" wx:for="{{chapter.data}}"  wx:for-index="idx">
   <view class="pic">
- 
-  
-    <image src="{{imag[idx]=='true'?img.open:img.close}}" bindtap="changedata" data-nums="{{idx+1}}" data-titles="{{item.title}}" style="width:15px;height:15px;"></image>
+    <image src="/images/icon/shousuo.jpg" bindtap="changedata" style="width:15px;height:15px;"></image>
   </view>
   <view class="stage">
   
      <view class="stageName">第{{num[idx]}}部分 {{item.title}}</view>
      <view>
-    
-     <image  src="/images/icon/level.jpg" style="width:97px;height:15px;"></image> 
-     </view> 
-  </view>
-    <view class="edit" bindtap="edit" data-chapterName="{{item.title}}">
-       <image src="/images/icon/edit.jpg" style="width:21px;height:20px;"></image>
-     </view>
-</view>
-
-<!-- 小节部分 -->
-
-<block wx:if="{{unitflag[idx]=='true'}}">
- 
-<view class="item"  wx:for="{{unit[idx].data}}">
-  <view class="pic">
-    <image src="/images/icon/unit.png"  style="width:15px;height:15px;"></image>
-  </view>
-  <view class="stage">
-  
-     <view class="stageName">{{item.unitName}}</view>
-     <view>
        <image bindtap="changeData" src="/images/icon/level.jpg" style="width:97px;height:15px;"></image>
      </view> 
   </view>
-    <view class="edit" bindtap="edit" data-unitName="{{item.unitName}}">
+    <view class="edit" bindtap="edit">
        <image src="/images/icon/edit.jpg" style="width:21px;height:20px;"></image>
      </view>
 </view>
-</block>
-</block>
 
-<button bindtap="changedata"  >xxx</button>
-<view bindtap="changedata" data-nums="1">sss</view>
+<!-- <button bindtap="changedata">xxx</button> -->
 <view class="line"></view>
 <!-- <view class="item">
   <view class="pic">
