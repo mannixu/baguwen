@@ -1,7 +1,7 @@
 Page({
   data:{
     currentTab:0,
-    chapterTitle:'',
+    subjectName:'',
     chapter:[],//存放章节数据data
     unit:[],//二维数组存放多个章节的多个小节数据data
     unitid:'',//小节所属章节   解决bug章节打开状态都有相同数据
@@ -109,6 +109,7 @@ Page({
 },
 
   onLoad:function(e){
+    //获取首页传过来科目名
      var subjetcName = e.subjectName;
      wx.setNavigationBarTitle({ title: subjetcName});
 
@@ -125,7 +126,8 @@ Page({
        success(res){
           console.log(res)
           that.setData({
-            chapter:res.data
+            chapter:res.data,
+            subjetcName:subjetcName//传过来科目名放到data中
 
             
           })

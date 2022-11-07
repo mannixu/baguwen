@@ -4,7 +4,7 @@
   <view class="unit">分/120分</view>
 </view>
 <view class="title">
-  北京市考纲-语文考点练习
+  {{subjetcName}}
 </view>
 <block wx:for="{{chapter.data}}" wx:key="*this"  wx:for-index="idx">
 <view class="item" >

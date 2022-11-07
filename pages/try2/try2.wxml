@@ -13,6 +13,16 @@
   <view class="movie-content-wrapper">
     <swiper current="{{navbarActiveIndex}}" bindanimationfinish="onBindAnimationFinish">
       <swiper-item wx:for="{{navbarTitle1}}" wx:for-item="item" wx:key="{{item.id}}" >
+        <radio-group ></radio-group>
+        <radio color="#0099FF" catchtap="onNavBarTap">ss</radio>
+        <radio-group>
+        <radio color="#FE5A59" content="x" catchtap="onNavBarTap">se</radio>
+      </radio-group>
+        <radio disabled="1" catchtap="onNavBarTap">sz</radio>
+        <radio disabled="1" catchtap="onNavBarTap">sb</radio>
+
+
+
         <view class="stage">
       <view class="name">专项智能练习（第一部分） 基础·运用</view>
       <view class="count">

@@ -1,7 +1,13 @@
 Page({
   data:{
-    currentTab:0,
-    topic:[],
+    currentTab:0,//swiper 当前页数
+    topic:[], //题目集合
+    results:[],//题目未提交是题目是否回答，提交题目回答结果true false
+    fillvalue:[],//判断填空题是否有数据标志符  
+    inputValue:[],//实时的填空值
+    radiosflag:true,  //是否提交标志符 用于提交完展示题目
+    selectflag:[], // 我选的答案的顺序集合
+
     
 
     answer: null,
@@ -43,6 +49,7 @@ Page({
          console.log(res)
          that.setData({
            topic:res.data,
+          
            
           
          })
@@ -62,39 +69,33 @@ Page({
     // }, 2000)
 
     },
-  // changeData(){
-  //   var that = this;
-  //   wx.request({
-  //     method:'get',//依据接口情况
-  //     url: 'http://127.0.0.1:8080/baguwen/topic/order',//微信小程序必须是https:
-  //     data: {
-  //       chapterTitle:'八股文'
-  //     },
-  //     header:{
-  //       'content-type': 'application/json' // 默认值
-  //     },
-  //     success(res){
-  //        console.log(res)
-  //        that.setData({
-  //          topic:res.data,
-           
-          
-  //        })
-  //        console.log(that.data.topic)
-         
-  //     },
-  //     fail(err){
-  //        console.log(err)
-  //     }
-  //   })
-  // },
-  truntopic(e){
-    console.log(e)
+  
+  truntopic(e){//选择题的点击事件  跳转下一页与设置选择题有值
+    // console.log(e)
     var page=this
-    let num1=e.currentTarget.dataset.num1;
-    
+    //获取参数跳转那一页
+    let renum1= e.currentTarget.dataset.num1//1_2 传过来第一题第二个答案
+    let num1=renum1.charAt(0);//获取第几题
+    let seleid=renum1.charAt(2);//表示第几个答案 用于展示那个是我选的
+    let setsele=this.data.selectflag;
+    //获取data里做题结果results
+    let isresult=this.data.results
+    setsele[num1-1]=seleid  //把我选的答案顺序放到集合里
+    //如果为空情况点击 设置true有值  如果非空情况点击 去掉值  设置flase没值
+    if(isresult[num1-1]==""||isresult[num1-1]==undefined||isresult[num1-1]==false){
+      isresult[num1-1]=true //选择题做题结果 true代表不空显示蓝色
+    }else{
+      // isresult[num1-1]=""
+    }
+    this.setData({
+      results:isresult,
+      selectflag:setsele
+    })
+    console.log(this.data.results)
+
     page.setData({
-      currentTab:num1
+      currentTab:num1  //设置跳转下一页
+      
     })
   },
   changeContent:function(e){
@@ -102,7 +103,196 @@ Page({
       var current = e.detail.current;
 
      this.setData({ currentTab: current});
+  },
+  submitData(event){
+    let that=this
+    let result=  event.detail.value;
+    //题目答题结果
+    let newresult=[]
+    //错误题目结果
+    let errorid=[]
+    let topic=that.data.topic;
+
+   
+    const keys = Object.keys(result)
+    const values=Object.entries(result)//传过来参数
+    console.log(values)
+    let index=0;  //用于题目遍历
+    let erid=0;  //用于存放错误题目集合的索引
+    let flag=true; //用于判断填空题做的可对
+    let nums=0;//用于判断填空题问题个数
+    
+    
+    for (let key in values) {
+      //获取正确答案集合
+      let listtrue=topic.data[index].listTrue
+      //获取题目id
+      let topicid=topic.data[index].id
+      //获取答案名前缀
+      let rename=values[key][0].substring(0,5)
+      //获取提交答案值
+      let revalue=values[key][1]
+     
+      console.log(values[key])
+      if(rename=="radio"){
+        //选择题处理逻辑
+        
+        if(revalue==listtrue[0]){//答对
+          newresult[index]=true
+        
+        }else{
+          newresult[index]=false //向结果集合存答题情况
+          errorid[erid]=topicid   //向错题id结合存错题id
+          erid++
+         
+        }
+        
+        index++
+      }
+
+        
+        //填空题处理逻辑
+        
+        if(rename=="topic"){
+          //题目次数
+        let g= values[key][0]
+        let z=g.charAt(5)
+        let f=values[key][0].charAt(5)
+         let topid= values[key][0].charAt(5)
+         //题目哪个个问题
+         let qusid=values[key][0].charAt(12)
+         //正确答案 
+         let trueresult=listtrue[qusid]
+         
+         //判断
+         if(revalue==trueresult){
+          
+         }else{ //不正确
+          flag=false  //有一个问题不正确 则flag标志设置为false 表示此题错误
+         }
+
+         //设置结果结合newresult和errorid 错题id集合
+         if(nums<listtrue.length-1){//  小于问题个数
+          nums++
+         }else{ //等于问题个数即当前题目最后一个问题
+           if(flag){ //问题都回答正确
+            newresult[index]=true
+           }else{//有问题回答错误
+            newresult[index]=false  //向结果集合存答题情况
+            errorid[erid]=topicid   //向错题id结合存错题id
+            erid++
+            flag=true     //重置flag
+           }
+           nums=0  //重置nums
+           index++  //表示问题遍历完开始遍历下一题
+         }
+
+         
+        }
+        
+        
+      }//循环结束 获取到 错误id接 errorid  和newrsult 题目结果集合
+     
+      //把答题情况设置到data里
+      that.setData({
+        results:newresult,
+        radiosflag:false  //表示已经提交过
+        
+      })
+      console.log(isflag)
+      console.log(errorid)
+      console.log(newresult)
+      console.log(JSON.stringify(errorid))
+      let eid=JSON.stringify(errorid)
+      console.log(JSON.parse(eid))
+      let re =JSON.parse(eid)
+      //把错题返回服务器保存
+      wx.request({
+        method:'post',//依据接口情况
+        url: 'http://127.0.0.1:8080/baguwen/topic/errorid',//微信小程序必须是https:
+        data: {
+          errorId:JSON.parse(eid),
+          userId:1     //没做登录先设置为1
+        },
+        header:{
+          'content-type': 'application/json' // 默认值
+        },
+        success(res){
+          // 没有返回结果后面可以设置预测分 
+        },
+        fail(err){
+          //  console.log(err)
+        }
+      })
+
+
+
+    },
+  
+    
+//输入框失去焦点事件
+  bloselur(e){
+
+    let that=this
+    //填空传过来参数
+    let strid=e.currentTarget.dataset.num2
+    //填空里值
+   let vlu= e.detail.value
+   //题目id
+   let topid=strid.charAt(0)
+   //问题id
+   let qusid=strid.charAt(2)
+   let fivalue=this.data.fillvalue
+   if(vlu==""||vlu==undefined){
+     //输入框无值
+    fivalue[qusid]=""
+   }else{
+     //输入框有值
+     fivalue[qusid]=true
+   }
+   //填空题正确答案个数
+  let trid= this.data.topic.data[topid].listTrue.length
+  //获取题目回答结果
+ let  preresult=this.data.results
+
+  that.setData({
+    fillvalue:fivalue
+  })
+  console.log(fivalue)
+  let okfill=this.data.fillvalue//用于判断填空是否都有值
+  let flg=true;
+  for (const key in okfill) {//判断填空是否都有值
+    if (okfill[key]!=true||okfill.length!=trid) { //有一个没值设置为flase
+      flg=false  
+    }
   }
+   if (flg) { //表示填空都有值
+    
+      preresult[topid]=true
 
+      that.setData({
+        results:preresult
+      })
+     }else{  //不是都有值重新设置一下 防止都有值 然后去掉一个空格值 不能及时更新
+      preresult[topid]=""
+      that.setData({
+        results:preresult
+      })
+     }
 
+  },
+
+  bindKeyInput: function (e) {  //获取输入值
+    console.log(e)
+    let tiid=e.currentTarget.dataset.num2.charAt(2) //问题id
+    let input=this.data.inputValue
+    input[tiid]=e.detail.value
+    this.setData({
+      
+      inputValue: input
+    })
+    console.log(this.data.inputValue)
+    
+  }
+ 
 })

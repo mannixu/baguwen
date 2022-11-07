@@ -1,14 +1,16 @@
 <view class="title">
-  当前教材：北京课改版
+  当前教材：{{subjetcName}}
 </view>
+<block wx:for="{{chapter.data}}" wx:key="this">
 <view class="item">
-  <view class="name">七年级上册</view>
+  <view class="name">{{item.title}}</view>
   <view class="opr">
     <image src="/images/icon/xia.jpg" style="width:17px;height:11px;"></image>
   </view>
 </view>
 <view class="line"></view>
-<view class="item">
+</block>
+<!-- <view class="item">
   <view class="name">七年级下册</view>
   <view class="opr">
     <image src="/images/icon/xia.jpg" style="width:17px;height:11px;"></image>
@@ -42,4 +44,4 @@
     <image src="/images/icon/xia.jpg" style="width:17px;height:11px;"></image>
   </view>
 </view>
-<view class="line"></view>
+<view class="line"></view> -->

@@ -30,6 +30,14 @@
   padding: 26rpx 0px;
   height:60rpx;
 }
+
+.test1{
+  content: ""
+}
+/* radio .wx-radio-input.wx-radio-input-checked::before  {
+  
+ 
+  } */
 .navbar-item-active{
   transition: all 0.3s;
   border-bottom: 6rpx solid #3aadd9;

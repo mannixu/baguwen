@@ -1,6 +1,7 @@
 <view class="content">
   <!-- swiper 想要点击切换加上current 想要获取当前页e.detail.current  -->
   <swiper style="height:800px;" current="{{currentTab}}"  bindchange="changeContent" >  
+  <form bindsubmit="submitData">
     <!-- 这个函数作用就是改变currentable的值 滑动加不加都可以滑动 -->
     <swiper-item wx:for="{{topic.data}}" wx:key="this">
 
@@ -24,26 +25,84 @@
     <view class="items">
       <block wx:if="{{item.type==1}}"> 
         <!-- 类型为选择题才进行遍历 -->
-        <radio-group name="radio" >
-          <view class="item" wx:for="{{item.listError}}" wx:for-item="topicItem" wx:key="topicItem">
-          <!-- 遍历答案 -->
-            <view class="left">
-              <label><radio value="radio1" color="#0099FF"/></label>
+        <radio-group name="radio{{index}}"  wx:if="{{radiosflag}}">
+          <view class="item" wx:for="{{item.listError}}" wx:for-index="idx" wx:for-item="topicItem" wx:key="topicItem">
+          <!-- 遍历选择答案 -->
+            <view class="left" bindtap="truntopic"   data-num1="{{index+1+'_'+idx}}"  >
+              <label ><radio   class="trueselect"    value="{{topicItem}}" color="#0099FF"/></label>
+              <!-- disabled={{index+'_'+idx==x[index][idx].name&&x[index][idx].vale?ture:false}} -->
             </view>
             <view class="result">{{topicItem}}</view>
           </view>
         </radio-group>
+
+        <!-- 用于展示解答结果 -->
+      <block wx:if="{{!radiosflag}}">
+        <view class="item" wx:for="{{item.listError}}" wx:for-index="idx" wx:for-item="topicItem" wx:key="topicItem">
+          <!-- 遍历选择答案 -->
+            <view class=""    data-num1="{{index+1}}"  >
+              <label ><radio   class="trueselect"    value="{{topicItem}}"
+              checked="{{topicItem==item.listTrue||selectflag[index]==idx}}"
+               color="{{topicItem==item.listTrue?'#0099FF':'#FE5A59'}}" disabled="{{topicItem==item.listTrue?blue:red||selectflag[index]==idx?false:true}}"/></label>
+              <!--clour={{topicItem==item.listTrue?blue:red}} 显示radio颜色 正确答案显示蓝色非正确显示红色 -->
+              <!-- disabled={{topicItem==item.listTrue?blue:red||selectflag[index]==idx?false:true}}  radiio是否可用 正确答案 和我选择答案不会被设置不可用selectflag[index]存放我选择答案位置-->
+            </view>
+            <!-- 答案值 -->
+            <view class="result">{{topicItem}}</view>
+          </view>
+          <!-- 显示回答正确错误 -->
+          <view> 
+            <label wx:if="{{results[index]}}">回答正确</label>
+            <label wx:if="{{!results[index]}}" class="writererror">回答错误</label>
+          </view>
+
+          <!-- 显示你的答案与正确答案 -->
+          <view wx:if="{{!results[index]}}">
+            <label  class="left">你的答案：</label><text>{{item.listError[selectflag[index]]}}</text>
+          </view>
+          <view> 
+            <label>正确答案：</label><text>{{item.listTrue}}</text>
+          </view>
+
+
+
+        </block>
       </block>
+      <!--  上面用于展示解答结果-->
 
 
-          <!-- <button bindtap="truntopic" data-num1="4">xxx</button> -->
+          <button bindtap="truntopic" data-num1="5">xxx</button>
          <!-- 显示填空题 -->
       <block wx:if="{{item.type==2}}">
         <view class="item"  wx:for="{{item.listTrue}}" wx:key="this" wx:for-index="idx">
            <view>答案{{idx+1}}：</view>
-           <input  class=""   placeholder="请输入答案{{idx+1}}"/>
+           <input    name="topic{{index}}_input{{idx}}"  data-num2="{{index+'_'+idx}}" bindblur="bloselur" bindinput="bindKeyInput"    placeholder="请输入答案{{idx+1}}"/>
+        </view>
+        <label>你的答案：</label>
+        <text>\n</text>
+        <text>\n</text>
+        <!-- 遍历你的答案 -->
+        <block wx:for="{{item.listTrue}}" wx:for-index="inputindex">
+          <view><label>答案{{inputindex+1}}：</label>{{inputValue[inputindex]}}</view>
+        </block>
+        <!-- 填空回答情况 -->
+        <view>
+          <label wx:if="{{results[index]&&!radiosflag}}">回答正确</label>
+          <label wx:if="{{!results[index]&&!radiosflag}}" class="writererror">回答错误</label>
+        </view>
+      <block wx:if="{{!radiosflag}}">
+        <label>正确答案</label>
+        <view  wx:for="{{item.listTrue}}" 
+        wx:for-index="inputindex">
+          
+          <view><label>答案{{inputindex+1}}：</label>{{item}}
+          </view>
         </view>
       </block>
+
+      
+      </block>
+        <!-- 上面显示填空题 -->
           
     </view>
       
@@ -61,8 +120,12 @@
           <text>{{topic.data[0].chapterTitle}}</text>
          
         <view class="itemnum">
+        <!-- 汇总页面 -->
          <block wx:for="{{topic.data}}" wx:key="this" wx:for-index="numindex">
-          <view class="num1" bindtap="truntopic" data-num1="{{numindex}}">{{numindex+1}}</view>
+         <!-- flase代表空显示红色num0  true代表不空显示蓝色 -->
+          <view class="{{!results[numindex]?'num0':'num1'}}" bindtap="truntopic" data-num1="{{numindex}}">{{numindex+1}}</view>
+          
+          
          </block>
           <!-- <view class="num1">1</view>
           <view class="num1">2</view>
@@ -72,47 +135,14 @@
         </view>
         
            
-           <button  class="submit" >提交并查看结果</button>
+           <button  class="submit" form-type="submit" >提交并查看结果</button>
          </view>
       </view>
    
 
-      <!-- <view>
-        <text>{{topic.data[0].chapterTitle}}</text>
-        <view class="empty">
-        <text >{{topic.data[0].chapterTitle}} 题目为空请添加题目</text>
-      </view>
-      </view> -->
+      
     </swiper-item>
-    <!-- <swiper-item>
-      <view class="subject">
-         <view class="fillBlanks">
-           <text class="year">(2013莆田)</text>
-           <text>采菊东篱下，</text>
-           <text class="blank">___________________</text>
-           <text>。（陶渊明《饮酒》）</text>
-         </view>
-      </view>
-    </swiper-item>
-    <swiper-item>
-      <view class="subject">
-         <view class="fillBlanks">
-           <text class="year">(2012南昌)</text>
-           <text>会当凌绝顶，</text>
-           <text class="blank">___________________</text>
-           <text>。（杜甫《望岳》）</text>
-         </view>
-      </view>
-    </swiper-item>
-    <swiper-item>
-      <view class="subject">
-         <view class="fillBlanks">
-           <text class="year">(2012潍坊)</text>
-           <text>先天下之忧而忧，</text>
-           <text class="blank">___________________</text>
-           <text>。（范仲淹《岳阳楼记》）</text>
-         </view>
-      </view>
-    </swiper-item> -->
+  </form>
+    
   </swiper>
 </view>
