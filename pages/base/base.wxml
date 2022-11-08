@@ -8,7 +8,8 @@
       <view class="stage">
       <view class="name">{{item.chapterTitle}}</view>
       <view class="count">
-        <text class="currentTab">{{currentTab+1}}</text>/5
+        <!-- 当前题目数/题目总数 -->
+        <text class="currentTab">{{currentTab+1}}</text>/{{topic.data.length}}
       </view>
     </view>
     <view class="line"></view>
@@ -63,26 +64,36 @@
           <view> 
             <label>正确答案：</label><text>{{item.listTrue}}</text>
           </view>
+          <!-- 显示解析 -->
+          <view>
+            <label>解析:</label>
+            
+            <text>
+              {{item.answer==null?'没有解析':item.answer}}
+            </text>
+            
+        </view>
 
 
 
         </block>
       </block>
-      <!--  上面用于展示解答结果-->
+      <!--  上面用于展示答案与正确答案-->
 
 
-          <button bindtap="truntopic" data-num1="5">xxx</button>
+          <!-- <button bindtap="truntopic" data-num1="5">xxx</button> -->
          <!-- 显示填空题 -->
       <block wx:if="{{item.type==2}}">
         <view class="item"  wx:for="{{item.listTrue}}" wx:key="this" wx:for-index="idx">
            <view>答案{{idx+1}}：</view>
-           <input    name="topic{{index}}_input{{idx}}"  data-num2="{{index+'_'+idx}}" bindblur="bloselur" bindinput="bindKeyInput"    placeholder="请输入答案{{idx+1}}"/>
+           <input  disabled="{{!radiosflag?true:false}}" value="{{inputValue[idx]}}"  name="topic{{index}}_input{{idx}}"  data-num2="{{index+'_'+idx}}" bindblur="bloselur" bindinput="bindKeyInput"    placeholder="{{!radiosflag?inputValue[idx]:'请输入答案'+(idx+1)}}"/>
+           
         </view>
         <label>你的答案：</label>
         <text>\n</text>
         <text>\n</text>
         <!-- 遍历你的答案 -->
-        <block wx:for="{{item.listTrue}}" wx:for-index="inputindex">
+        <block wx:for="{{item.listTrue}}" wx:key="this" wx:for-index="inputindex">
           <view><label>答案{{inputindex+1}}：</label>{{inputValue[inputindex]}}</view>
         </block>
         <!-- 填空回答情况 -->
@@ -90,17 +101,17 @@
           <label wx:if="{{results[index]&&!radiosflag}}">回答正确</label>
           <label wx:if="{{!results[index]&&!radiosflag}}" class="writererror">回答错误</label>
         </view>
+
       <block wx:if="{{!radiosflag}}">
         <label>正确答案</label>
         <view  wx:for="{{item.listTrue}}" 
-        wx:for-index="inputindex">
+        wx:for-index="inputindex" wx:key="this">
           
           <view><label>答案{{inputindex+1}}：</label>{{item}}
           </view>
         </view>
       </block>
 
-      
       </block>
         <!-- 上面显示填空题 -->
           
@@ -123,7 +134,8 @@
         <!-- 汇总页面 -->
          <block wx:for="{{topic.data}}" wx:key="this" wx:for-index="numindex">
          <!-- flase代表空显示红色num0  true代表不空显示蓝色 -->
-          <view class="{{!results[numindex]?'num0':'num1'}}" bindtap="truntopic" data-num1="{{numindex}}">{{numindex+1}}</view>
+          <view class="{{!results[numindex]?'num0':'num1'}}" bindtap="truntopic" data-num1="{{numindex+'_2'}}">{{numindex+1}}</view>
+          <!-- _2没作用与前面选择答案传的保持一致 防止报错 -->
           
           
          </block>

@@ -8,7 +8,11 @@
     "pages/base/base",
     "pages/rank/rank",
     "pages/try/try",
-    "pages/try2/try2"
+    "pages/try2/try2",
+    "pages/login/login",
+    "pages/logincode/logincode"
+    
+    
   ],
   "window":{
     "backgroundTextStyle":"light",
@@ -35,8 +39,8 @@
       "iconPath": "/images/bar/me-0.jpg",
       "selectedIconPath": "/images/bar/me-1.jpg"
     },{
-      "pagePath": "pages/try2/try2",
-      "text": "try",
+      "pagePath": "pages/logincode/logincode",
+      "text": "登录",
       "iconPath": "/images/bar/me-0.jpg",
       "selectedIconPath": "/images/bar/me-1.jpg"
     }]

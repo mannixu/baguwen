@@ -27,7 +27,8 @@ App({
     }
   },
   globalData: {
-    userInfo: null
+    is_login:false,  //用户是否登录标识符
+    userInfo: null  //用户信息
   },
   loadSubjects: function () {
     var subjects = new Array();

@@ -50,8 +50,6 @@ Page({
          that.setData({
            topic:res.data,
           
-           
-          
          })
          console.log(that.data.topic)
          
@@ -199,7 +197,7 @@ Page({
         radiosflag:false  //表示已经提交过
         
       })
-      console.log(isflag)
+      
       console.log(errorid)
       console.log(newresult)
       console.log(JSON.stringify(errorid))

@@ -1,11 +1,11 @@
 <view class="content">
   <view class="items">
     <view class="hr"></view>
-    <view class="item">
+    <view class="item" bindtap="userdetail">
       <view class="img">
         <image src="/images/me/head.jpg" style="width:54px;height:54px"></image>
       </view>
-      <view class="name">{{userInfo.nickName}}</view>
+      <view class="name">{{userInfo.name}}</view>
       <view class="detail">
         <text>></text>
       </view>

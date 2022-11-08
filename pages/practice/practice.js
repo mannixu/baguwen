@@ -11,11 +11,14 @@ Page({
     interval: 2000,
     duration: 500
   },
-  onLoad:function(){
+  
+  onShow:function(){  //onload  页面加载只调用一次  onshow每次跳到页面都会调用
     var page = this;
-    app.getUserInfo(function(userInfo){
-      page.setData({ userInfo: userInfo});
-    });
+    // app.getUserInfo(function(userInfo){
+     let user= app.globalData.userInfo //从app获取用户
+      page.setData({ 
+        userInfo: user});
+    // });
     this.loadSubjects();
   },
   loadSubjects:function(){

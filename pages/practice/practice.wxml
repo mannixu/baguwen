@@ -22,9 +22,9 @@
       <image src="/images/icon/head.jpg" style="width:29px;height:29px;"></image>
     </view>
     <view>
-      {{userInfo.nickName}}
+      {{userInfo.name}}
     </view>
-    <view class="count">累计答0道</view>
+    <view class="count">累计答{{userInfo.number!=null?userInfo.number:0}}道</view>
   </view>
   <view class="line"></view>
   <view class="items">
