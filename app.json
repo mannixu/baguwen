@@ -10,7 +10,9 @@
     "pages/try/try",
     "pages/try2/try2",
     "pages/login/login",
-    "pages/logincode/logincode"
+    "pages/logincode/logincode",
+    "pages/loginsure/loginsure",
+    "pages/forget/forget"
     
     
   ],
@@ -38,11 +40,8 @@
       "text": "我",
       "iconPath": "/images/bar/me-0.jpg",
       "selectedIconPath": "/images/bar/me-1.jpg"
-    },{
-      "pagePath": "pages/logincode/logincode",
-      "text": "登录",
-      "iconPath": "/images/bar/me-0.jpg",
-      "selectedIconPath": "/images/bar/me-1.jpg"
-    }]
+    }
+    
+  ]
   }
 }

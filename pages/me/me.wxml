@@ -5,7 +5,8 @@
       <view class="img">
         <image src="/images/me/head.jpg" style="width:54px;height:54px"></image>
       </view>
-      <view class="name">{{userInfo.name}}</view>
+      <view class="name">{{userInfo.name==null||userInfo.name==''?'点击登录':userInfo.name}}</view>
+    
       <view class="detail">
         <text>></text>
       </view>

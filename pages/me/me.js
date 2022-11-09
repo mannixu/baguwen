@@ -19,8 +19,8 @@ Page({
         icon: 'none',
         duration: 1000
       })
-      wx.switchTab({  //未登录 跳转登录页面
-        url: '../login/login',
+      wx.navigateTo({  //未登录 跳转登录页面
+        url: '../logincode/logincode',
       })
     }else{
 

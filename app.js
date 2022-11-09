@@ -28,7 +28,8 @@ App({
   },
   globalData: {
     is_login:false,  //用户是否登录标识符
-    userInfo: null  //用户信息
+    userInfo: null,  //用户信息
+    timeout: 61
   },
   loadSubjects: function () {
     var subjects = new Array();
