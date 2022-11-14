@@ -68,7 +68,7 @@ Page({
     if(imag[n-1]=='true'){ //在关闭状态 点击发送请求
      wx.request({
        method:'get',//依据接口情况
-       url: 'http://127.0.0.1:8080/baguwen/unit/findUnitByChapterTitle',//微信小程序必须是https:
+       url: 'http://43.139.60.104:8080/baguwen/unit/findUnitByChapterTitle',//微信小程序必须是https:
        data: {
          chapterName:e.currentTarget.dataset.titles
        },
@@ -76,7 +76,7 @@ Page({
          'content-type': 'application/json' // 默认值
        },
        success(res){
-          console.log(res)
+          // console.log(res)
           //给数组一维下标n赋值一个数组
          
           twunit[n-1]=res.data  //n为章节id 要减一为下标
@@ -93,7 +93,7 @@ Page({
           
        },
        fail(err){
-          console.log(err)
+          // console.log(err)
        }
      })
     }
@@ -108,7 +108,7 @@ Page({
      var that = this;
      wx.request({
        method:'get',//依据接口情况
-       url: 'http://127.0.0.1:8080/baguwen/chapter/findCapterByCourse',//微信小程序必须是https:
+       url: 'http://43.139.60.104:8080/baguwen/chapter/findCapterByCourse',//微信小程序必须是https:
        data: {
          courseTitle:'八股文'
        },
@@ -116,7 +116,7 @@ Page({
          'content-type': 'application/json' // 默认值
        },
        success(res){
-          console.log(res)
+          // console.log(res)
           that.setData({
             chapter:res.data,
             subjetcName:subjetcName//传过来科目名放到data中
@@ -128,7 +128,7 @@ Page({
           
        },
        fail(err){
-          console.log(err)
+          // console.log(err)
        }
      })
 

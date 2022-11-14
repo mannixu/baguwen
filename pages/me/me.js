@@ -2,13 +2,17 @@ var app = getApp();
 Page({
 
   data:{
-    userInfo:{}
+    userInfo:''
   },
-  onLoad:function(){
+  onShow:function(){
     var page = this;
-    app.getUserInfo(function (userInfo){
-      page.setData({ userInfo:userInfo});
-    });
+    // app.getUserInfo(function (userInfo){
+    //   page.setData({ userInfo:userInfo});
+    // });
+    let userInfo=app.globalData.userInfo
+    page.setData({
+      userInfo:userInfo
+    })
   },
 
   userdetail(){
@@ -22,8 +26,10 @@ Page({
       wx.navigateTo({  //未登录 跳转登录页面
         url: '../logincode/logincode',
       })
-    }else{
-
+    }else{  //登录跳转用户信息页面
+      wx.navigateTo({  //未登录 跳转登录页面
+        url: '../medetail/medetail',
+      })
     }
   }
 })

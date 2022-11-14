@@ -3,8 +3,10 @@ Page({
     currentTab:0,//swiper 当前页数
     topic:[], //题目集合
     results:[],//题目未提交是题目是否回答，提交题目回答结果true false
-    fillvalue:[],//判断填空题是否有数据标志符  
-    inputValue:[],//实时的填空值
+    fillvalue:[],//判断填空题是否有数据标志符   true ''
+    chapterName:'',//接收初次访问页面传过来章节用于 继续练习传参数
+    unitName:'',//接收初次访问页面传过来小节 用于继续练习传参数
+    inputtwo:[], //实时的填空值
     radiosflag:true,  //是否提交标志符 用于提交完展示题目
     selectflag:[], // 我选的答案的顺序集合
 
@@ -33,11 +35,15 @@ Page({
    
     onLoad(options){//生命周期函数 每次页面加载 从option取穿过来参数
       var that = this;
-      console.log(options.chapterName)
-      console.log(options.unitName)
+      // console.log(options.chapterName)
+      // console.log(options.unitName)
+      this.setData({
+        chapterName:options.chapterName,
+        unitName:options.unitName
+      })
     wx.request({
       method:'get',//依据接口情况
-      url: 'http://127.0.0.1:8080/baguwen/topic/order',//微信小程序必须是https:
+      url: 'http://43.139.60.104:8080/baguwen/topic/order',//微信小程序必须是https:
       data: {
         chapterTitle:options.chapterName,
         unitName:options.unitName
@@ -46,25 +52,19 @@ Page({
         'content-type': 'application/json' // 默认值
       },
       success(res){
-         console.log(res)
+        //  console.log(res)
          that.setData({
            topic:res.data,
           
          })
-         console.log(that.data.topic)
+        //  console.log(that.data.topic)
          
       },
       fail(err){
-         console.log(err)
+        //  console.log(err)
       }
     })
-    // wx.showLoading({
-    //   title: '加载中',
-    // })
     
-    // setTimeout(function () {
-    //   wx.hideLoading()
-    // }, 2000)
 
     },
   
@@ -89,7 +89,7 @@ Page({
       results:isresult,
       selectflag:setsele
     })
-    console.log(this.data.results)
+    // console.log(this.data.results)
 
     page.setData({
       currentTab:num1  //设置跳转下一页
@@ -97,24 +97,25 @@ Page({
     })
   },
   changeContent:function(e){
-    console.log(e);
+    // console.log(e);
       var current = e.detail.current;
 
      this.setData({ currentTab: current});
   },
-  submitData(event){
+  submitData(event){  //提交题目效验 错题入库  题目记录 number+1
     let that=this
     let result=  event.detail.value;
     //题目答题结果
     let newresult=[]
     //错误题目结果
     let errorid=[]
+   
     let topic=that.data.topic;
 
    
     const keys = Object.keys(result)
     const values=Object.entries(result)//传过来参数
-    console.log(values)
+    // console.log(values)
     let index=0;  //用于题目遍历
     let erid=0;  //用于存放错误题目集合的索引
     let flag=true; //用于判断填空题做的可对
@@ -131,12 +132,13 @@ Page({
       //获取提交答案值
       let revalue=values[key][1]
      
-      console.log(values[key])
+      // console.log(values[key])
       if(rename=="radio"){
         //选择题处理逻辑
         
         if(revalue==listtrue[0]){//答对
           newresult[index]=true
+         
         
         }else{
           newresult[index]=false //向结果集合存答题情况
@@ -175,6 +177,7 @@ Page({
          }else{ //等于问题个数即当前题目最后一个问题
            if(flag){ //问题都回答正确
             newresult[index]=true
+           
            }else{//有问题回答错误
             newresult[index]=false  //向结果集合存答题情况
             errorid[erid]=topicid   //向错题id结合存错题id
@@ -198,18 +201,20 @@ Page({
         
       })
       
-      console.log(errorid)
-      console.log(newresult)
-      console.log(JSON.stringify(errorid))
-      let eid=JSON.stringify(errorid)
-      console.log(JSON.parse(eid))
+      // console.log(errorid)
+      // console.log(newresult)
+      // console.log(JSON.stringify(errorid))
+      let eid=JSON.stringify(errorid)  //数组类型 先转为字符串 再转对象才能传参成功
+      
+      // console.log(JSON.parse(eid))
       let re =JSON.parse(eid)
       //把错题返回服务器保存
       wx.request({
         method:'post',//依据接口情况
-        url: 'http://127.0.0.1:8080/baguwen/topic/errorid',//微信小程序必须是https:
+        url: 'http://43.139.60.104:8080/baguwen/topic/errorid',//微信小程序必须是https:
         data: {
           errorId:JSON.parse(eid),
+          
           userId:1     //没做登录先设置为1
         },
         header:{
@@ -256,7 +261,7 @@ Page({
   that.setData({
     fillvalue:fivalue
   })
-  console.log(fivalue)
+  // console.log(fivalue)
   let okfill=this.data.fillvalue//用于判断填空是否都有值
   let flg=true;
   for (const key in okfill) {//判断填空是否都有值
@@ -271,6 +276,11 @@ Page({
       that.setData({
         results:preresult
       })
+
+      //都有值设置fillvalue为空不然 下一题默认fillvalue是有值的
+      that.setData({
+        fillvalue:[]
+      })
      }else{  //不是都有值重新设置一下 防止都有值 然后去掉一个空格值 不能及时更新
       preresult[topid]=""
       that.setData({
@@ -280,17 +290,50 @@ Page({
 
   },
 
-  bindKeyInput: function (e) {  //获取输入值
-    console.log(e)
+  bindKeyInput: function (e) {  //获取输入值  //键盘输入时触发
+    // console.log(e)
+     //题目id
+    let topid=e.currentTarget.dataset.num2.charAt(0)
     let tiid=e.currentTarget.dataset.num2.charAt(2) //问题id
-    let input=this.data.inputValue
-    input[tiid]=e.detail.value
-    this.setData({
-      
-      inputValue: input
-    })
-    console.log(this.data.inputValue)
     
+    
+    let inputtw=this.data.inputtwo //获得题目数组  inputtwo是个二维数组  二维数组每一行是一道填空题各个答案
+    if (inputtw[topid]==undefined) {
+      inputtw[topid]=[]  //定义第二层是个数组 不然为undefined
+    }   //不能直接给二维数组第二层赋值 必须先定义第二层数组
+  
+    inputtw[topid][tiid]=e.detail.value   //设置此行数据
+    
+    
+    this.setData({
+     
+      inputtwo:inputtw
+    })
+    
+    // console.log(inputtw)
+    
+    
+    
+  },
+
+  doagagin(){
+    let that=this
+    
+   
+    
+    //重新加载页面
+    let a=this.data.chapterName
+   let b=this.data.unitName
+    that.onLoad({chapterName:a,unitName:b})
+
+    let c=this.data.radiosflag
+   let d=this.data.topic
+
+   this.setData({
+    radiosflag:true,  //设置为提交
+    currentTab:0  //设置跳转第一页
+  })
+
   }
  
 })

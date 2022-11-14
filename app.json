@@ -12,7 +12,9 @@
     "pages/login/login",
     "pages/logincode/logincode",
     "pages/loginsure/loginsure",
-    "pages/forget/forget"
+    "pages/forget/forget",
+    "pages/medetail/medetail",
+    "pages/mealtermsg/mealtermsg"
     
     
   ],

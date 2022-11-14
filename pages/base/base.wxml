@@ -38,19 +38,19 @@
         </radio-group>
 
         <!-- 用于展示解答结果 -->
-      <block wx:if="{{!radiosflag}}">
-        <view class="item" wx:for="{{item.listError}}" wx:for-index="idx" wx:for-item="topicItem" wx:key="topicItem">
-          <!-- 遍历选择答案 -->
-            <view class=""    data-num1="{{index+1}}"  >
-              <label ><radio   class="trueselect"    value="{{topicItem}}"
-              checked="{{topicItem==item.listTrue||selectflag[index]==idx}}"
-               color="{{topicItem==item.listTrue?'#0099FF':'#FE5A59'}}" disabled="{{topicItem==item.listTrue?blue:red||selectflag[index]==idx?false:true}}"/></label>
-              <!--clour={{topicItem==item.listTrue?blue:red}} 显示radio颜色 正确答案显示蓝色非正确显示红色 -->
-              <!-- disabled={{topicItem==item.listTrue?blue:red||selectflag[index]==idx?false:true}}  radiio是否可用 正确答案 和我选择答案不会被设置不可用selectflag[index]存放我选择答案位置-->
+        <block wx:if="{{!radiosflag}}">
+          <view class="item" wx:for="{{item.listError}}" wx:for-index="idx" wx:for-item="topicItem" wx:key="topicItem">
+            <!-- 遍历选择答案 -->
+              <view class=""    data-num1="{{index+1}}"  >
+                <label ><radio   class="trueselect"    value="{{topicItem}}"
+                checked="{{topicItem==item.listTrue||selectflag[index]==idx}}"
+                color="{{topicItem==item.listTrue?'#0099FF':'#FE5A59'}}" disabled="{{topicItem==item.listTrue?blue:red||selectflag[index]==idx?false:true}}"/></label>
+                <!--clour={{topicItem==item.listTrue?blue:red}} 显示radio颜色 正确答案显示蓝色非正确显示红色 -->
+                <!-- disabled={{topicItem==item.listTrue?blue:red||selectflag[index]==idx?false:true}}  radiio是否可用 正确答案 和我选择答案不会被设置不可用selectflag[index]存放我选择答案位置-->
+              </view>
+              <!-- 答案值 -->
+              <view class="result">{{topicItem}}</view>
             </view>
-            <!-- 答案值 -->
-            <view class="result">{{topicItem}}</view>
-          </view>
           <!-- 显示回答正确错误 -->
           <view> 
             <label wx:if="{{results[index]}}">回答正确</label>
@@ -72,13 +72,11 @@
               {{item.answer==null?'没有解析':item.answer}}
             </text>
             
-        </view>
-
-
+          </view>
 
         </block>
       </block>
-      <!--  上面用于展示答案与正确答案-->
+      <!--  上面用于展示选择题答案与正确答案-->
 
 
           <!-- <button bindtap="truntopic" data-num1="5">xxx</button> -->
@@ -86,7 +84,8 @@
       <block wx:if="{{item.type==2}}">
         <view class="item"  wx:for="{{item.listTrue}}" wx:key="this" wx:for-index="idx">
            <view>答案{{idx+1}}：</view>
-           <input  disabled="{{!radiosflag?true:false}}" value="{{inputValue[idx]}}"  name="topic{{index}}_input{{idx}}"  data-num2="{{index+'_'+idx}}" bindblur="bloselur" bindinput="bindKeyInput"    placeholder="{{!radiosflag?inputValue[idx]:'请输入答案'+(idx+1)}}"/>
+           <input  disabled="{{!radiosflag?true:false}}" value="{{inputtwo[index][idx]}}"  name="topic{{index}}_input{{idx}}"  data-num2="{{index+'_'+idx}}" bindblur="bloselur" bindinput="bindKeyInput"    placeholder="{{!radiosflag?inputtwo[index][idx]:'请输入答案'+(idx+1)}}"/>
+           
            
         </view>
         <label>你的答案：</label>
@@ -94,7 +93,7 @@
         <text>\n</text>
         <!-- 遍历你的答案 -->
         <block wx:for="{{item.listTrue}}" wx:key="this" wx:for-index="inputindex">
-          <view><label>答案{{inputindex+1}}：</label>{{inputValue[inputindex]}}</view>
+          <view><label>答案{{inputindex+1}}：</label>{{inputtwo[index][inputindex]}}</view>
         </block>
         <!-- 填空回答情况 -->
         <view>
@@ -102,15 +101,25 @@
           <label wx:if="{{!results[index]&&!radiosflag}}" class="writererror">回答错误</label>
         </view>
 
-      <block wx:if="{{!radiosflag}}">
-        <label>正确答案</label>
-        <view  wx:for="{{item.listTrue}}" 
-        wx:for-index="inputindex" wx:key="this">
-          
-          <view><label>答案{{inputindex+1}}：</label>{{item}}
+        <block wx:if="{{!radiosflag}}">
+          <label>正确答案</label>
+          <view  wx:for="{{item.listTrue}}" 
+          wx:for-index="inputindex" wx:key="this">
+            
+            <view><label>答案{{inputindex+1}}：</label>{{item}}
+            </view>
           </view>
+        </block>
+
+      <!-- 显示填空解析 -->
+        <view>
+            <label>解析:</label>
+            
+            <text>
+              {{item.answer==null?'没有解析':item.answer}}
+            </text>
+            
         </view>
-      </block>
 
       </block>
         <!-- 上面显示填空题 -->
@@ -146,8 +155,10 @@
           <view class="num1">5</view> -->
         </view>
         
-           
-           <button  class="submit" form-type="submit" >提交并查看结果</button>
+           <!-- //不提交展示 -->
+           <button  class="submit"  wx:if="{{radiosflag}}"  form-type="submit" >提交并查看结果</button>
+           <!-- 提交后展示 -->
+           <button  class="submit" wx:if="{{!radiosflag}}" bindtap="doagagin" form-type="button" >继续练习</button>
          </view>
       </view>
    

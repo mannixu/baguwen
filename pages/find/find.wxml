@@ -1,5 +1,6 @@
 <view class="content">
-  <view class="items">
+  <!-- <view class="items">
+
     <view class="hr"></view>
     <view class="item">
       <view class="img">
@@ -81,5 +82,14 @@
       </view>
     </view>
     <view class="hr"></view>
-  </view>
+  </view> -->
+  <view class="hr"></view>
+  <text>瓜哇题库1.0 功能有\n</text>
+  <text class="tis">1.练习，2.登录，3.在线导入题库\n</text>
+
+  <text>\n瓜哇题库2.0 功能将添加\n
+  </text>
+ 
+  <text class="tis">1.java笔记，2.java路线全套视频\n\n</text>
+ 
 </view>

@@ -36,3 +36,9 @@
   border: 1px solid #cccccc;
   opacity: 0.2;
 }
+.hr{
+  height: 80px;
+}
+.tis{
+  color: #0099FF;
+}

@@ -11,7 +11,7 @@
         <text>></text>
       </view>
     </view>
-    <view class="hr">
+    <!-- <view class="hr">
       练习
     </view>
     <view class="item">
@@ -22,8 +22,8 @@
       <view class="detail">
         <text> ></text>
       </view>
-    </view>
-    <view class="line"></view>
+    </view> -->
+    <!-- <view class="line"></view>
     <view class="item" bindtap="rank">
       <view class="img">
         <image src="/images/me/lxjl.jpg" style="width:17px;height:18px"></image>
@@ -120,6 +120,6 @@
         <text> ></text>
       </view>
     </view>
-    <view class="hr"></view>
+    <view class="hr"></view> -->
   </view>
 </view>
